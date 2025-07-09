@@ -78,37 +78,6 @@ quote,author,tags,author_link,word_count,tag_count,character_count,source_url
 "Cleaned quote text","Author Name","tag1, tag2","http://...",15,2,85,"http://..."
 ```
 
-## 🔧 Penggunaan
-
-### Basic Usage
-```python
-from quotes_etl import QuotesETL
-
-# Inisialisasi ETL processor
-etl = QuotesETL(delay=1.0)
-
-# Jalankan ETL pipeline
-success = etl.run_etl_pipeline(
-    start_url="http://quotes.toscrape.com/page/1/",
-    max_pages=10,
-    output_prefix="quotes_clean_etl"
-)
-```
-
-### Advanced Usage
-```python
-# Konfigurasi custom
-etl = QuotesETL(
-    base_url="http://quotes.toscrape.com",
-    delay=2.0  # Delay 2 detik antar request
-)
-
-# Jalankan tahap per tahap
-raw_data = etl.extract_all_pages("http://quotes.toscrape.com/page/1/", max_pages=5)
-transformed_data = etl.transform_all_quotes(raw_data)
-load_success = etl.load_data(transformed_data, "my_quotes")
-```
-
 ## 📈 Metrics & Monitoring
 
 Sistem mencatat berbagai metrics:
